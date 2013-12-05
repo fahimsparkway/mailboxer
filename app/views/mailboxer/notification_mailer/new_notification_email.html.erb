@@ -4,13 +4,25 @@
     <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
   </head>
   <body>
-    <h1>You have a new notification: <%= @notification.subject.html_safe? ? @notification.subject : strip_tags(@notification.subject) %></h1>
+    <h4>You have a new notification: <%= @notification.subject.html_safe? ? @notification.subject : strip_tags(@notification.subject) %></h4>
     <p>
       You have received a new notification:
     </p>
     <blockquote>
       <p>
         <%= raw @notification.body %>
+      </p>
+      <p>
+        Ask :-<%= raw @notification.ask %>
+      </p>
+      <p>
+        schedule_1 :-<%= raw @notification.schedule_1 %>
+      </p>
+      <p>
+        schedule_2 :-<%= raw @notification.schedule_2 %>
+      </p>
+      <p>
+        schedule_3 :-<%= raw @notification.schedule_3 %>
       </p>
     </blockquote>
     <p>
