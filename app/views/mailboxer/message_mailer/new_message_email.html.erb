@@ -4,36 +4,57 @@
     <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
   </head>
   <body>
-    <h4><%= @subject %></h4>
     
     <blockquote>
-      <p>
-        <%= raw @message.body %>
-      </p>
+      <% if @message.custom_type == "connect_mail" %>
+        <b>Body: </b>
+          <% if @message.body.present? %>
+            <p><%= @message.body %></p>
+          <% else %>
+            <p>No Body entered</p>
+          <% end %>
+      
+      <% elsif @message.custom_type == "meeting_mail" %>  
+        <b>Body: </b> 
+          <% if @message.body.present? %>
+            <p><%= @message.body %></p>
+          <% else %>
+            <p>No Body entered</p>
+          <% end %>  
+        <b>Ask:</b>
+          <% if @message.ask.present? %>
+            <p><%= @message.ask %></p>
+          <% else %>
+            <p>No ask entered</p>
+          <% end %>
+        <b>Schedule 1 :</b>
+          <% if @message.schedule_1.present? %>
+            <p><%= @message.schedule_1.strftime("%a %d-%B-%Y %I:%M %p") %></p>
+          <% else %>
+            <p>Schedule 1 is not scheduled</p>
+          <% end %>    
+        <b>Schedule 2 :</b>
+          <% if @message.schedule_2.present? %>
+            <p><%= @message.schedule_2.strftime("%a %d-%B-%Y %I:%M %p") %></p>
+          <% else %>
+            <p>Schedule 2 is not scheduled</p>
+          <% end %>
+        <b>Schedule 3 :</b>
+          <% if @message.schedule_3.present? %>
+            <p><%= @message.schedule_3.strftime("%a %d-%B-%Y %I:%M %p") %></p>
+          <% else %>
+            <p>Schedule 3 is not scheduled</p>
+          <% end %>
 
-      <% if @message.ask.present? %>
-        <p>
-          Ask :- <%= raw @message.ask %>
-        </p>
-      <% end %>
-
-      <% if @message.schedule_1.present? %>
-        <p>
-          Schedule 1 :- <%= raw @message.schedule_1 %>
-        </p>
-      <% end %>
-
-      <% if @message.schedule_2.present? %>
-        <p>
-          Schedule 2 :- <%= raw @message.schedule_2 %>
-        </p>
-      <% end %>
-
-      <% if @message.schedule_3.present? %>
-        <p>
-          Schedule 3 :- <%= raw @message.schedule_3 %>
-        </p>
-      <% end %>
+       <% else %>
+          <b>Body: </b>
+            <% if @message.body.present? %>
+              <p><%= @message.body %></p>
+            <% else %>
+              <p>No Body entered</p>
+            <% end %>
+        
+     <% end %>   
 
     </blockquote>
     <p>
