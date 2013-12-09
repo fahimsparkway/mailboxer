@@ -59,11 +59,11 @@ module Mailboxer
 
       #Sends a messages, starting a new conversation, with the messageable
       #as originator
-      def send_message(recipients, msg_body, subject, msg_ask = nil, msg_schedule_1 = nil, msg_schedule_2 = nil, msg_schedule_3 = nil, msg_custom_type = nil,msg_skills = nil, msg_recomend = nil, msg_project_referral = nil, msg_other = nil,  sanitize_text=true, attachment=nil, message_timestamp = Time.now)
+      def send_message(recipients, msg_body, subject, msg_ask = nil, msg_schedule_1 = nil, msg_schedule_2 = nil, msg_schedule_3 = nil, msg_custom_type = nil,msg_skills = nil, msg_recomend = nil, msg_project_referral = nil, msg_other = nil, msg_recomend_user = nil,  sanitize_text=true, attachment=nil, message_timestamp = Time.now)
         convo = Mailboxer::Conversation.new({:subject => subject})
         convo.created_at = message_timestamp
         convo.updated_at = message_timestamp
-        message = messages.new({:body => msg_body, :subject => subject, :ask => msg_ask, :schedule_1 => msg_schedule_1, :schedule_2 => msg_schedule_2, :schedule_3 => msg_schedule_3, :custom_type => msg_custom_type, :skills => msg_skills, :recomend => msg_recomend, :project_referral => msg_project_referral, :other => msg_other, :attachment => attachment})
+        message = messages.new({:body => msg_body, :subject => subject, :ask => msg_ask, :schedule_1 => msg_schedule_1, :schedule_2 => msg_schedule_2, :schedule_3 => msg_schedule_3, :custom_type => msg_custom_type, :skills => msg_skills, :recomend => msg_recomend, :project_referral => msg_project_referral, :other => msg_other,:recomend_user => msg_recomend_user, :attachment => attachment})
         message.created_at = message_timestamp
         message.updated_at = message_timestamp
         message.conversation = convo

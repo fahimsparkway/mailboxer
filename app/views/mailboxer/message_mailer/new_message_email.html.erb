@@ -22,6 +22,11 @@
                 <p>No Body entered</p>
               <% end %>
            
+           <% if @message.recomend_user.present? %>
+             <b>Recomendation for </b>
+             <p><%= @message.recomend_user %></p>
+             <% end %>
+
            <% if @message.skills.present? %>
               <b>Skills:</b>
               <p><%= @message.skills %></p>

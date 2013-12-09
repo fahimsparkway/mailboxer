@@ -2,7 +2,7 @@ class Mailboxer::Notification < ActiveRecord::Base
   self.table_name = :mailboxer_notifications
 
   attr_accessor :recipients
-  attr_accessible :skills, :recomend, :project_referral, :other, :ask, :schedule_1, :schedule_2, :schedule_3, :custom_type, :body, :subject, :global, :expires if Mailboxer.protected_attributes?
+  attr_accessible :recomend_user, :skills, :recomend, :project_referral, :other, :ask, :schedule_1, :schedule_2, :schedule_3, :custom_type, :body, :subject, :global, :expires if Mailboxer.protected_attributes?
 
   belongs_to :sender, :polymorphic => :true
   belongs_to :notified_object, :polymorphic => :true
