@@ -13,7 +13,35 @@
           <% else %>
             <p>No Body entered</p>
           <% end %>
-      
+
+      <% elsif @message.custom_type == "introduce_mail" %>
+          <b>Body: </b>
+              <% if @message.body.present? %>
+                <p><%= @message.body %></p>
+              <% else %>
+                <p>No Body entered</p>
+              <% end %>
+           
+           <% if @message.skills.present? %>
+              <b>Skills:</b>
+              <p><%= @message.skills %></p>
+           <% end %>
+
+           <% if @message.recomend.present? %>
+              <b>Recomendations:</b>
+              <p><%= @message.recomend %></p>
+           <% end %>
+
+           <% if @message.project_referral.present? %>
+              <b>Project Referral:</b>
+              <p><%= @message.project_referral %></p>
+           <% end %>
+
+           <% if @message.other.present? %>
+              <b>Others</b>
+              <p><%= @message.other %></p>
+           <% end %>   
+            
       <% elsif @message.custom_type == "meeting_mail" %>  
         <b>Body: </b> 
           <% if @message.body.present? %>
